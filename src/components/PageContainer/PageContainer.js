@@ -1,11 +1,11 @@
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 
 export default function PageContainer({ children }) {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>User app</title>
-      </Helmet>
+      </Helmet> */}
       <div className="flex justify-center items-center text-4xl text-gray-950">
         {children}
       </div>

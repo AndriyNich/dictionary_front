@@ -1,13 +1,13 @@
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 import PageContainer from 'components/PageContainer/PageContainer';
 
 export default function Register() {
   return (
     <>
       <PageContainer>
-        <Helmet>
+        {/* <Helmet>
           <title>Registration user</title>
-        </Helmet>
+        </Helmet> */}
         <div>Registration form</div>
       </PageContainer>
     </>
