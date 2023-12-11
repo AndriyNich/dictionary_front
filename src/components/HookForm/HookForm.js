@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import * as myYup from 'utils/myYup';
-import { Input } from 'uiComponents';
+// import { Input } from 'uiComponents';
 
 const fieldName = 'userName';
 
@@ -25,18 +25,16 @@ export default function HookForm() {
 
   const onSubmit = data => console.log(data);
 
-  //   console.log(watch('example')); // watch input value by passing the name of it
-
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col text-xs">
       {/* register your input into the hook by invoking the "register" function */}
-      <Input
+      {/* <Input
         label="User name:"
         inputName={fieldName}
         register={register}
         errors={errors}
-      />
+      /> */}
       <label className="m-2 flex">
         <span className=" block p-2">First name</span>
         <div>

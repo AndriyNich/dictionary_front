@@ -5,44 +5,59 @@ export const create = function () {
 };
 
 export default class MyStringSchema extends yup.StringSchema {
-  required(message = 'Error: a value must be specified') {
-    return super.required(message);
+  fieldName = '';
+
+  named(fieldName = '') {
+    this.fieldName = `"${fieldName}"`;
+    return this;
   }
 
-  length(length, message = `Error: the string length must be ${length}`) {
-    return super.length(length, message);
+  addParams(result = {}) {
+    result.fieldName = this.fieldName;
+    return result;
   }
 
-  min(min, message = `Error: the number of symbols must be ${min} or more`) {
-    return super.min(min, message);
+  required(message = `${this.fieldName} is a required field`) {
+    return this.addParams(super.required(message));
   }
 
-  max(max, message = `Error: the number of symbols must be ${max} or less`) {
-    return super.max(max, message);
+  length(
+    length,
+    message = `${this.fieldName} must be at least ${length} characters`
+  ) {
+    return this.addParams(super.length(length, message));
+  }
+
+  min(min, message = `${this.fieldName} length must be ${min} or more`) {
+    return this.addParams(super.min(min, message));
+  }
+
+  max(max, message = `${this.fieldName} length  must be ${max} or less`) {
+    return this.addParams(super.max(max, message));
   }
 
   matches(regex, options) {
     // треба буде розписати options на message і інші, та реалізувати збірку і прокидування далі
-    return super.matches(regex, options);
+    return this.addParams(super.matches(regex, options));
   }
 
-  email(message = 'Error: ') {
-    return super.email(message);
+  email(message = `${this.fieldName}`) {
+    return this.addParams(super.email(message));
   }
 
-  uuid(message = 'Error: ') {
-    return super.uuid(message);
+  uuid(message = `${this.fieldName}`) {
+    return this.addParams(super.uuid(message));
   }
 
-  trim(message = 'Error: ') {
-    return super.trim(message);
+  trim(message = `${this.fieldName}`) {
+    return this.addParams(super.trim(message));
   }
 
-  lowercase(message) {
-    return super.lowercase(message);
+  lowercase(message = `${this.fieldName}`) {
+    return this.addParams(super.lowercase(message));
   }
 
-  uppercase(message) {
-    return super.uppercase(message);
+  uppercase(message = `${this.fieldName}`) {
+    return this.addParams(super.uppercase(message));
   }
 }
