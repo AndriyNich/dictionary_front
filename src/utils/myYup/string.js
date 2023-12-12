@@ -8,7 +8,7 @@ export default class MyStringSchema extends yup.StringSchema {
   fieldName = '';
 
   named(fieldName = '') {
-    this.fieldName = `"${fieldName}"`;
+    this.fieldName = fieldName !== '' ? `"${fieldName}"` : '';
     return this;
   }
 
@@ -16,6 +16,8 @@ export default class MyStringSchema extends yup.StringSchema {
     result.fieldName = this.fieldName;
     return result;
   }
+
+  setFirstCharToUpper(message) {}
 
   required(message = `${this.fieldName} is a required field`) {
     return this.addParams(super.required(message));
