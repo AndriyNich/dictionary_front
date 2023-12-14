@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { setFirstCharToUpper } from 'utils/function/string';
 
 export const create = function () {
   return new MyStringSchema();
@@ -17,24 +18,36 @@ export default class MyStringSchema extends yup.StringSchema {
     return result;
   }
 
-  setFirstCharToUpper(message) {}
-
-  required(message = `${this.fieldName} is a required field`) {
+  required(
+    message = setFirstCharToUpper(`${this.fieldName} is a required field`)
+  ) {
     return this.addParams(super.required(message));
   }
 
   length(
     length,
-    message = `${this.fieldName} must be at least ${length} characters`
+    message = setFirstCharToUpper(
+      `${this.fieldName} must be at least ${length} characters`
+    )
   ) {
     return this.addParams(super.length(length, message));
   }
 
-  min(min, message = `${this.fieldName} length must be ${min} or more`) {
+  min(
+    min,
+    message = setFirstCharToUpper(
+      `${this.fieldName} length must be ${min} or more`
+    )
+  ) {
     return this.addParams(super.min(min, message));
   }
 
-  max(max, message = `${this.fieldName} length  must be ${max} or less`) {
+  max(
+    max,
+    message = setFirstCharToUpper(
+      `${this.fieldName} length  must be ${max} or less`
+    )
+  ) {
     return this.addParams(super.max(max, message));
   }
 
@@ -43,23 +56,23 @@ export default class MyStringSchema extends yup.StringSchema {
     return this.addParams(super.matches(regex, options));
   }
 
-  email(message = `${this.fieldName}`) {
+  email(message = setFirstCharToUpper(`${this.fieldName}`)) {
     return this.addParams(super.email(message));
   }
 
-  uuid(message = `${this.fieldName}`) {
+  uuid(message = setFirstCharToUpper(`${this.fieldName}`)) {
     return this.addParams(super.uuid(message));
   }
 
-  trim(message = `${this.fieldName}`) {
+  trim(message = setFirstCharToUpper(`${this.fieldName}`)) {
     return this.addParams(super.trim(message));
   }
 
-  lowercase(message = `${this.fieldName}`) {
+  lowercase(message = setFirstCharToUpper(`${this.fieldName}`)) {
     return this.addParams(super.lowercase(message));
   }
 
-  uppercase(message = `${this.fieldName}`) {
+  uppercase(message = setFirstCharToUpper(`${this.fieldName}`)) {
     return this.addParams(super.uppercase(message));
   }
 }

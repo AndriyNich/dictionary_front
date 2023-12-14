@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import * as myYup from 'utils/myYup';
+import * as myYup from 'validation/myYup';
 // import { Input } from 'uiComponents';
 
 const fieldName = 'userName';
