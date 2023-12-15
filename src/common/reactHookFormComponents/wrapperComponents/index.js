@@ -1,4 +1,4 @@
 import { WrpTextField } from './WrpTextField';
-// import { WrpPasswordField } from './WrpPasswordField';
+import { WrpPasswordField } from './WrpPasswordField';
 
-export { WrpTextField };
+export { WrpTextField, WrpPasswordField };

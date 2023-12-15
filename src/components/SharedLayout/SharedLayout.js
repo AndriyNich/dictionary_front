@@ -1,9 +1,13 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { menuActiveElement } from 'styles/menuActiveElement';
+import { Container } from '@mui/material';
 
 export default function SharedLayout() {
   return (
-    <div className="h-full flex flex-col gap-4">
+    <Container
+      maxWidth="lg"
+      sx={{ height: '100vh', display: 'flex', flexDirection: 'column' }}
+    >
       <header>
         <nav className="flex gap-4">
           <NavLink
@@ -41,6 +45,6 @@ export default function SharedLayout() {
         </nav>
       </header>
       <Outlet />
-    </div>
+    </Container>
   );
 }

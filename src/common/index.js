@@ -1,4 +1,5 @@
 import Input from './input';
-import { WrpTextField } from './reactHookFormComponents';
+import { WrpTextField, WrpPasswordField } from 'common/reactHookFormComponents';
+import { componentProps } from 'common/utils';
 
-export { Input, WrpTextField };
+export { Input, WrpTextField, WrpPasswordField, componentProps };

@@ -1,28 +1,22 @@
 import { Controller } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
-import { setFirstCharToUpper } from 'utils/function/string';
 
 export default function WrpTextField({ params } = {}) {
-  let { control, errors, name, label = '', placeholder = '' } = params;
-
-  if (label === '') {
-    label = setFirstCharToUpper(name);
-  }
-  if (placeholder === '') {
-    placeholder = `Enter you ${name}`;
-  }
+  let { control, errors, controlName, label = '', placeholder = '' } = params;
 
   return (
     <Controller
-      name={name}
+      name={controlName}
       control={control}
       render={({ field }) => (
         <TextField
+          fullWidth
           label={label}
-          id={name}
+          id={controlName}
+          name={controlName}
           placeholder={placeholder}
-          error={!!errors[name]}
-          helperText={errors[name] ? errors[name].message : ''}
+          error={!!errors[controlName]}
+          helperText={errors[controlName] ? errors[controlName].message : ''}
           {...field}
         />
       )}

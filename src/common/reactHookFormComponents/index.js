@@ -1,3 +1,3 @@
-import { WrpTextField } from './wrapperComponents';
+import { WrpTextField, WrpPasswordField } from './wrapperComponents';
 
-export { WrpTextField };
+export { WrpTextField, WrpPasswordField };
