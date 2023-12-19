@@ -1,3 +1,4 @@
 import { PasswordField } from 'common/muiComponents/PasswordField';
+import { NLink } from 'common/muiComponents/NLink';
 
-export { PasswordField };
+export { PasswordField, NLink };

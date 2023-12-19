@@ -18,6 +18,7 @@ const PasswordField = React.forwardRef(function PasswordField(
     label = '',
     placeholder = ' ',
     errors = {},
+    additionalErrorType = '',
   } = params;
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
@@ -25,6 +26,31 @@ const PasswordField = React.forwardRef(function PasswordField(
   const handleMouseDownPassword = event => {
     event.preventDefault();
   };
+
+  function messageForHelperText() {
+    // console.log(`additionalErrorType: ${additionalErrorType}`);
+    if (errors[controlName]) {
+      return errors[controlName].message;
+    }
+
+    if (errors[additionalErrorType]) {
+      return errors[additionalErrorType].message;
+    }
+
+    return '';
+  }
+
+  function isError() {
+    if (!!errors[controlName]) {
+      return true;
+    }
+
+    if (!!errors[additionalErrorType]) {
+      return true;
+    }
+
+    return false;
+  }
 
   return (
     <TextField
@@ -34,8 +60,8 @@ const PasswordField = React.forwardRef(function PasswordField(
       id={controlName}
       name={controlName}
       placeholder={placeholder}
-      error={!!errors[controlName]}
-      helperText={errors[controlName] ? errors[controlName].message : ''}
+      error={isError()}
+      helperText={messageForHelperText()}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">

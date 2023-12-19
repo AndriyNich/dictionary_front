@@ -56,7 +56,7 @@ export default class MyStringSchema extends yup.StringSchema {
     return this.addParams(super.matches(regex, options));
   }
 
-  email(message = setFirstCharToUpper(`${this.fieldName}`)) {
+  email(message = setFirstCharToUpper(`${this.fieldName} is not email`)) {
     return this.addParams(super.email(message));
   }
 

@@ -8,12 +8,14 @@ export default class componentProps {
       controlName = '',
       label = '',
       placeholder = '',
+      additionalErrorType = '',
     } = params;
     this._control = control;
     this._errors = errors;
     this._controlName = controlName;
     this._label = label;
     this._placeholder = placeholder;
+    this._additionalErrorType = additionalErrorType;
   }
 
   get control() {
@@ -45,6 +47,14 @@ export default class componentProps {
       return this._placeholder;
     }
     return `Enter ${this.#getLabel()}`;
+  }
+
+  get additionalErrorType() {
+    return this._additionalErrorType;
+  }
+
+  set additionalErrorType(additionalErrorType) {
+    this._additionalErrorType = additionalErrorType;
   }
 
   #getLabel() {

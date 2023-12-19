@@ -4,6 +4,7 @@ import Home from 'pages/Home';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import Page404 from 'pages/Page404';
+import { ComingSoonPage } from 'components/Utils';
 
 export const App = () => {
   return (
@@ -14,6 +15,8 @@ export const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<div>Logout</div>} />
+
+          <Route path="/forgotpassword" element={<ComingSoonPage />} />
 
           <Route path="*" element={<Page404 />} />
         </Route>
