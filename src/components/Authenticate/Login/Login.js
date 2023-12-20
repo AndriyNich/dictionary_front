@@ -6,10 +6,11 @@ import { Box, Button } from '@mui/material';
 
 import { WrpTextField, WrpPasswordField, componentProps } from 'common';
 import { NLink } from 'common/muiComponents';
+import { yupSchemas } from 'validation/yup';
 
 const schema = yup.object({
-  login: yup.string().min(5),
-  password: yup.string().min(5),
+  login: yupSchemas.login('Login'),
+  password: yupSchemas.password('Password'),
 });
 
 export default function Login(props) {
@@ -24,6 +25,7 @@ export default function Login(props) {
     },
     resolver: yupResolver(schema),
   });
+  console.log('load login form');
 
   const onSubmit = data => console.log(data);
 

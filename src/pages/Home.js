@@ -1,18 +1,12 @@
-// import { Helmet } from 'react-helmet';
-import PageContainer from 'components/PageContainer/PageContainer';
-import HookForm from 'components/HookForm/HookForm';
+import { AuthContainer } from 'components/Authenticate';
+import { HomePage } from 'components/Main/HomePage';
+import { Copyright } from 'components/Copyryght';
 
 export default function Home() {
   return (
-    <PageContainer>
-      {/* <Helmet>
-        <title>App Dictionary</title>
-      </Helmet> */}
-      <div>
-        <div>Home</div>
-        <br />
-        <HookForm />
-      </div>
-    </PageContainer>
+    <AuthContainer>
+      <HomePage sx={{ mt: 1, width: 1 }} />
+      <Copyright sx={{ mt: 'auto', pb: 2 }} />
+    </AuthContainer>
   );
 }

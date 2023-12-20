@@ -13,13 +13,17 @@ const PasswordField = React.forwardRef(function PasswordField(
 ) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const {
+  let {
     controlName = '',
     label = '',
     placeholder = ' ',
     errors = {},
     additionalErrorType = '',
   } = params;
+
+  controlName = controlName[0];
+  label = label[0];
+  placeholder = placeholder[0];
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 

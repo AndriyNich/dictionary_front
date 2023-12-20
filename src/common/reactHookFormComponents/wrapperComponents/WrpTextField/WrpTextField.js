@@ -6,17 +6,19 @@ export default function WrpTextField({ params } = {}) {
 
   return (
     <Controller
-      name={controlName}
+      name={controlName[0]}
       control={control}
       render={({ field }) => (
         <TextField
           fullWidth
-          label={label}
-          id={controlName}
-          name={controlName}
-          placeholder={placeholder}
-          error={!!errors[controlName]}
-          helperText={errors[controlName] ? errors[controlName].message : ''}
+          label={label[0]}
+          id={controlName[0]}
+          name={controlName[0]}
+          placeholder={placeholder[0]}
+          error={!!errors[controlName[0]]}
+          helperText={
+            errors[controlName[0]] ? errors[controlName[0]].message : ''
+          }
           {...field}
         />
       )}

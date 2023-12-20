@@ -16,7 +16,7 @@ export default function WrpPasswordField({ params }) {
 
   return (
     <Controller
-      name={controlName}
+      name={controlName[0]}
       control={control}
       render={({ field }) => {
         return <PasswordField params={params} {...field} />;

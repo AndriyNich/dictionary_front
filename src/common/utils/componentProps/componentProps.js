@@ -5,16 +5,34 @@ export default class componentProps {
     const {
       control = {},
       errors = {},
-      controlName = '',
-      label = '',
-      placeholder = '',
+      controlName = [],
+      label = [],
+      placeholder = [],
       additionalErrorType = '',
+      fieldComparisonErrorType = '',
     } = params;
+
     this._control = control;
     this._errors = errors;
-    this._controlName = controlName;
-    this._label = label;
-    this._placeholder = placeholder;
+    if (Array.isArray(controlName)) {
+      this._controlName = controlName;
+    } else {
+      this._controlName = [controlName];
+    }
+
+    if (Array.isArray(label)) {
+      this._label = label;
+    } else {
+      this._label = [label];
+    }
+
+    if (Array.isArray(placeholder)) {
+      this._placeholder = placeholder;
+    } else {
+      this._placeholder = [placeholder];
+    }
+
+    this._fieldComparisonErrorType = fieldComparisonErrorType;
     this._additionalErrorType = additionalErrorType;
   }
 
@@ -30,35 +48,44 @@ export default class componentProps {
     return this._controlName;
   }
 
-  set controlName(name) {
-    this._controlName = name;
+  set controlName(value) {
+    this._controlName = value;
   }
 
   get label() {
-    return setFirstCharToUpper(this.#getLabel());
+    return this.#getLabel().map(elm => setFirstCharToUpper(elm));
   }
 
-  set label(label) {
-    this._label = label;
+  set label(value) {
+    this._label = value;
   }
 
   get placeholder() {
-    if (this._placeholder && this._placeholder !== '') {
+    if (this._placeholder && this._placeholder.length !== 0) {
       return this._placeholder;
     }
-    return `Enter ${this.#getLabel()}`;
+
+    return this.#getLabel().map(elm => `Enter ${elm.toLowerCase()}`);
   }
 
   get additionalErrorType() {
     return this._additionalErrorType;
   }
 
-  set additionalErrorType(additionalErrorType) {
-    this._additionalErrorType = additionalErrorType;
+  set additionalErrorType(value) {
+    this._additionalErrorType = value;
+  }
+
+  get fieldComparisonErrorType() {
+    return this._fieldComparisonErrorType;
+  }
+
+  set fieldComparisonErrorType(value) {
+    this._fieldComparisonErrorType = value;
   }
 
   #getLabel() {
-    if (this._label && this._label !== '') {
+    if (this._label && this._label.length !== 0) {
       return this._label;
     }
 

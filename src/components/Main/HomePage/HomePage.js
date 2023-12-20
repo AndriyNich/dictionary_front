@@ -4,14 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Box, Button } from '@mui/material';
 
-import { WrpTextField, WrpPasswordField, componentProps, NLink } from 'common';
+import { componentProps } from 'common';
+import { WrpConfirmPassword } from 'common/reactHookFormComponents/wrapperComponents/WrpConfirmPassword';
 import { yupSchemas } from 'validation/yup';
 
 const tmp = 'password';
 
 const schema = yup.object({
-  nickname: yupSchemas.nickname('Nickname'),
-  login: yupSchemas.login('Login'),
   password: yupSchemas
     .password('Password')
     .test('match', 'Error', function (value) {
@@ -26,12 +25,11 @@ const schema = yup.object({
     }),
 });
 
-export default function Registration(props) {
+export default function HomePage(props) {
   const {
     control,
     handleSubmit,
     getValues,
-    clearErrors,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -48,19 +46,8 @@ export default function Registration(props) {
     console.log(data);
   };
 
-  if (errors.password || errors.confirm) {
-    const { password, confirm } = getValues();
-    if (password === confirm) {
-      if (errors.password?.type === 'match') {
-        clearErrors('password');
-      }
-      if (errors.confirm?.type === 'match') {
-        clearErrors('confirm');
-      }
-    }
-  }
-
-  console.log('load registration form');
+  console.log('load');
+  console.log(errors);
 
   return (
     <Box {...props}>
@@ -77,52 +64,28 @@ export default function Registration(props) {
             height: 1,
           }}
         >
-          <WrpTextField
+          <WrpConfirmPassword
             params={
               new componentProps({
                 control: control,
                 errors: errors,
-                controlName: 'nickname',
-                label: 'Nickname *',
+                controlName: ['password', 'confirm'],
+                label: ['password *', 'confirm *'],
+                fieldComparisonErrorType: 'match',
               })
             }
-          />
-          <WrpTextField
-            params={
-              new componentProps({
-                control: control,
-                errors: errors,
-                controlName: 'login',
-                label: 'Login *',
-              })
-            }
-          />
-          <WrpPasswordField
-            params={
-              new componentProps({
-                control: control,
-                errors: errors,
-                controlName: 'password',
-                label: 'Password *',
-              })
-            }
-          />
-          <WrpPasswordField
-            params={
-              new componentProps({
-                control: control,
-                errors: errors,
-                controlName: 'confirm',
-                label: 'Confirm password *',
-              })
-            }
+            getValues={getValues}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 2,
+              width: 1,
+            }}
           />
           <Button variant="contained" type="submit" fullWidth>
             Sing up
           </Button>
-          <NLink to="/login" variant="body2" sx={{ ml: 'auto' }}>
-            Already have an account? Sign in
-          </NLink>
         </Box>
       </form>
     </Box>
