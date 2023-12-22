@@ -9,7 +9,7 @@ export default class componentProps {
       label = [],
       placeholder = [],
       additionalErrorType = '',
-      fieldComparisonErrorType = '',
+      comparisonErrorType = '',
     } = params;
 
     this._control = control;
@@ -32,7 +32,7 @@ export default class componentProps {
       this._placeholder = [placeholder];
     }
 
-    this._fieldComparisonErrorType = fieldComparisonErrorType;
+    this._comparisonErrorType = comparisonErrorType;
     this._additionalErrorType = additionalErrorType;
   }
 
@@ -76,12 +76,12 @@ export default class componentProps {
     this._additionalErrorType = value;
   }
 
-  get fieldComparisonErrorType() {
-    return this._fieldComparisonErrorType;
+  get comparisonErrorType() {
+    return this._comparisonErrorType;
   }
 
-  set fieldComparisonErrorType(value) {
-    this._fieldComparisonErrorType = value;
+  set comparisonErrorType(value) {
+    this._comparisonErrorType = value;
   }
 
   #getLabel() {

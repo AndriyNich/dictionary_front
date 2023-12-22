@@ -1,3 +1,7 @@
-import { WrpTextField, WrpPasswordField } from './wrapperComponents';
+import {
+  WrpTextField,
+  WrpPasswordField,
+  WrpConfirmPassword,
+} from './wrapperComponents';
 
-export { WrpTextField, WrpPasswordField };
+export { WrpTextField, WrpPasswordField, WrpConfirmPassword };

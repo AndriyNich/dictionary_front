@@ -1,29 +1,39 @@
-import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Box, Button } from '@mui/material';
 
-import { WrpTextField, WrpPasswordField, componentProps, NLink } from 'common';
+import {
+  WrpTextField,
+  WrpConfirmPassword,
+  componentProps,
+  NLink,
+} from 'common';
 import { yupSchemas } from 'validation/yup';
+import { getDefaultValues } from 'utils/function';
 
-const tmp = 'password';
+const comparisonErrorType = 'match';
+
+const fields = {
+  nickname: { name: 'nickname', label: 'Nickname *' },
+  login: { name: 'login', label: 'Login * ' },
+  password: { name: 'password', label: 'Password *' },
+  confirm: { name: 'confirm', label: 'Confirm *' },
+};
 
 const schema = yup.object({
-  nickname: yupSchemas.nickname('Nickname'),
-  login: yupSchemas.login('Login'),
-  password: yupSchemas
-    .password('Password')
-    .test('match', 'Error', function (value) {
-      const { confirm } = this.parent;
-      return confirm === value;
-    }),
-  confirm: yupSchemas
-    .password('Confirm')
-    .test('match', 'Error', function (value) {
-      const value1 = this.parent[tmp] ?? '';
-      return value1 === value;
-    }),
+  nickname: yupSchemas.nickname(fields.nickname.name),
+  login: yupSchemas.login(fields.login.name),
+  password: yupSchemas.passwordWithConparison(
+    fields.password.name,
+    fields.confirm.name,
+    comparisonErrorType
+  ),
+  confirm: yupSchemas.passwordWithConparison(
+    fields.confirm.name,
+    fields.password.name,
+    comparisonErrorType
+  ),
 });
 
 export default function Registration(props) {
@@ -31,15 +41,9 @@ export default function Registration(props) {
     control,
     handleSubmit,
     getValues,
-    clearErrors,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      nickname: '',
-      login: '',
-      password: '',
-      confirm: '',
-    },
+    defaultValues: getDefaultValues(fields),
     resolver: yupResolver(schema),
   });
 
@@ -47,20 +51,6 @@ export default function Registration(props) {
     console.log('onSubmit');
     console.log(data);
   };
-
-  if (errors.password || errors.confirm) {
-    const { password, confirm } = getValues();
-    if (password === confirm) {
-      if (errors.password?.type === 'match') {
-        clearErrors('password');
-      }
-      if (errors.confirm?.type === 'match') {
-        clearErrors('confirm');
-      }
-    }
-  }
-
-  console.log('load registration form');
 
   return (
     <Box {...props}>
@@ -82,8 +72,8 @@ export default function Registration(props) {
               new componentProps({
                 control: control,
                 errors: errors,
-                controlName: 'nickname',
-                label: 'Nickname *',
+                controlName: fields.nickname.name,
+                label: fields.nickname.label,
               })
             }
           />
@@ -92,30 +82,29 @@ export default function Registration(props) {
               new componentProps({
                 control: control,
                 errors: errors,
-                controlName: 'login',
-                label: 'Login *',
+                controlName: fields.login.name,
+                label: fields.login.label,
               })
             }
           />
-          <WrpPasswordField
+          <WrpConfirmPassword
             params={
               new componentProps({
-                control: control,
-                errors: errors,
-                controlName: 'password',
-                label: 'Password *',
+                control,
+                errors,
+                controlName: [fields.password.name, fields.confirm.name],
+                label: [fields.password.label, fields.confirm.label],
+                comparisonErrorType,
               })
             }
-          />
-          <WrpPasswordField
-            params={
-              new componentProps({
-                control: control,
-                errors: errors,
-                controlName: 'confirm',
-                label: 'Confirm password *',
-              })
-            }
+            getValues={getValues}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 2,
+              width: 1,
+            }}
           />
           <Button variant="contained" type="submit" fullWidth>
             Sing up

@@ -37,18 +37,38 @@ const nickname = (nameValidationObject = '') => {
 };
 
 const password = (nameValidationObject = '') => {
-  return myYup.string().named(nameValidationObject).required().min(6).max(50);
-  // .matches(regex.number[0], regex.number[1])
+  return myYup
+    .string()
+    .named(nameValidationObject)
+    .required()
+    .min(6)
+    .max(50)
+    .matches(regex.number[0], regex.number[1]);
   // .matches(regex.specialcharacter[0], regex.specialcharacter[1])
   // .matches(regex.letterLowerCase[0], regex.letterLowerCase[1])
   // .matches(regex.letterUpperCase[0], regex.letterUpperCase[1])
   // .matches(regex.length(6)[0], regex.length(6)[1]);
 };
 
+const passwordWithConparison = (
+  nameValidationObject = '',
+  nameComparisonObject = '',
+  comparisonErrorType = ''
+) => {
+  return password(nameValidationObject).test(
+    comparisonErrorType,
+    'Error comparasion password and confirm',
+    function (value) {
+      return this.parent[nameComparisonObject] === value;
+    }
+  );
+};
+
 const yupSchemas = {
   login,
   nickname,
   password,
+  passwordWithConparison,
 };
 
 export default yupSchemas;

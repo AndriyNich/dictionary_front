@@ -8,22 +8,27 @@ import { componentProps } from 'common';
 import { WrpConfirmPassword } from 'common/reactHookFormComponents/wrapperComponents/WrpConfirmPassword';
 import { yupSchemas } from 'validation/yup';
 
-const tmp = 'password';
+const comparisonErrorType = 'match';
 
 const schema = yup.object({
-  password: yupSchemas
-    .password('Password')
-    .test('match', 'Error', function (value) {
-      const { confirm } = this.parent;
-      return confirm === value;
-    }),
-  confirm: yupSchemas
-    .password('Confirm')
-    .test('match', 'Error', function (value) {
-      const value1 = this.parent[tmp] ?? '';
-      return value1 === value;
-    }),
+  password: yupSchemas.passwordWithConparison(
+    'password',
+    'confirm',
+    comparisonErrorType
+  ),
+  confirm: yupSchemas.passwordWithConparison(
+    'confirm',
+    'password',
+    comparisonErrorType
+  ),
 });
+
+const defaultValues = {
+  nickname: '',
+  login: '',
+  password: '',
+  confirm: '',
+};
 
 export default function HomePage(props) {
   const {
@@ -32,12 +37,7 @@ export default function HomePage(props) {
     getValues,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      nickname: '',
-      login: '',
-      password: '',
-      confirm: '',
-    },
+    defaultValues,
     resolver: yupResolver(schema),
   });
 
@@ -67,11 +67,11 @@ export default function HomePage(props) {
           <WrpConfirmPassword
             params={
               new componentProps({
-                control: control,
-                errors: errors,
+                control,
+                errors,
                 controlName: ['password', 'confirm'],
                 label: ['password *', 'confirm *'],
-                fieldComparisonErrorType: 'match',
+                comparisonErrorType,
               })
             }
             getValues={getValues}
