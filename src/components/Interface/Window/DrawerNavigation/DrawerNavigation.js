@@ -46,7 +46,7 @@ export default function DrawerNavigation({ theme, open, handleDrawerClose }) {
       anchor="left"
       open={open}
     >
-      // FIXME Change handleDrawerClose => onClick
+      {/* FIXME Change handleDrawerClose => onClick */}
       <DrawerAuth theme={theme} handleDrawerClose={handleDrawerClose}>
         Login
       </DrawerAuth>
