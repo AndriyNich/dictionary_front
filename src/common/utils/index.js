@@ -1,3 +1,3 @@
-import { componentProps } from 'common/utils/componentProps';
+import componentProps from './componentProps';
 
 export { componentProps };

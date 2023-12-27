@@ -1,3 +1,3 @@
 import NLink from './NLink';
 
-export { NLink };
+export default NLink;

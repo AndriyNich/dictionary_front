@@ -1,3 +1,3 @@
 import componentProps from './componentProps';
 
-export { componentProps };
+export default componentProps;

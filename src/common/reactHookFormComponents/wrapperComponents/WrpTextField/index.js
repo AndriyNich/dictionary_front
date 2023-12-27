@@ -1,3 +1,3 @@
 import WrpTextField from './WrpTextField';
 
-export { WrpTextField };
+export default WrpTextField;

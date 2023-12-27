@@ -1,3 +1,3 @@
 import DrawerHeader from './DrawerHeader';
 
-export { DrawerHeader };
+export default DrawerHeader;

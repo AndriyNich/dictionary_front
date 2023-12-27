@@ -1,11 +1,11 @@
-import PageContainer from 'components/PageContainer/PageContainer';
+import { AuthContainer } from 'components/authenticate';
 
 export default function Page404() {
   return (
     <>
-      <PageContainer>
+      <AuthContainer>
         <div>Page not fount</div>
-      </PageContainer>
+      </AuthContainer>
     </>
   );
 }

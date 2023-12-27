@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { Box, Button } from '@mui/material';
 
 import { componentProps } from 'common';
-import { WrpConfirmPassword } from 'common/reactHookFormComponents/wrapperComponents/WrpConfirmPassword';
+import WrpConfirmPassword from 'common/reactHookFormComponents/wrapperComponents/WrpConfirmPassword';
 import { yupSchemas } from 'validation/yup';
 
 const comparisonErrorType = 'match';
@@ -45,9 +45,6 @@ export default function HomePage(props) {
     console.log('onSubmit');
     console.log(data);
   };
-
-  console.log('load');
-  console.log(errors);
 
   return (
     <Box {...props}>

@@ -25,7 +25,6 @@ export default function Login(props) {
     },
     resolver: yupResolver(schema),
   });
-  console.log('load login form');
 
   const onSubmit = data => console.log(data);
 

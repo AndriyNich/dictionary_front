@@ -4,8 +4,8 @@ import {
   AuthContainer,
   AuthHeader,
   Registration,
-} from 'components/Authenticate';
-import { Copyright } from 'components/Copyryght';
+} from 'components/authenticate';
+import Copyright from 'components/Copyright';
 
 export default function Register() {
   return (

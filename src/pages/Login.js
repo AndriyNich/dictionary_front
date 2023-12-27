@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { AuthContainer, AuthHeader, Login } from 'components/Authenticate';
-import { Copyright } from 'components/Copyryght';
+import { AuthContainer, AuthHeader, Login } from 'components/authenticate';
+import Copyright from 'components/Copyright';
 
 export default function Register() {
   return (

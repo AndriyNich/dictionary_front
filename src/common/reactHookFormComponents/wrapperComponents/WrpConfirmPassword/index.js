@@ -1,3 +1,3 @@
 import WrpConfirmPassword from './WrpConfirmPassword';
 
-export { WrpConfirmPassword };
+export default WrpConfirmPassword;

@@ -1,6 +1,6 @@
-import { AuthContainer } from 'components/Authenticate';
-import { HomePage } from 'components/Main/HomePage';
-import { Copyright } from 'components/Copyryght';
+import { AuthContainer } from 'components/authenticate';
+import { HomePage } from 'components/main/HomePage';
+import Copyright from 'components/Copyright';
 
 export default function Home() {
   return (

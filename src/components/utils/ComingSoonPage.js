@@ -1,8 +1,8 @@
 import * as React from 'react';
-
-import { AuthContainer } from 'components/Authenticate';
 import { Typography } from '@mui/material';
+
 import { NLink } from 'common';
+import { AuthContainer } from 'components/authenticate';
 
 export default function ComingSoonPage() {
   return (

@@ -1,3 +1,3 @@
 import WINDOW from './constant';
 
-export { WINDOW };
+export default WINDOW;

@@ -1,3 +1,3 @@
 import WrpPasswordField from './WrpPasswordField';
 
-export { WrpPasswordField };
+export default WrpPasswordField;

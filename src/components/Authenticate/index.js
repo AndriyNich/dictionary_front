@@ -1,6 +1,6 @@
-import { AuthHeader } from 'components/Authenticate/AuthHeader';
-import { AuthContainer } from 'components/Authenticate/AuthContainer';
-import { Registration } from 'components/Authenticate/Registration';
-import { Login } from 'components/Authenticate/Login';
+import AuthHeader from 'components/authenticate/AuthHeader';
+import AuthContainer from 'components/authenticate/AuthContainer';
+import Registration from 'components/authenticate/Registration';
+import Login from 'components/authenticate/Login';
 
 export { AuthContainer, AuthHeader, Login, Registration };

@@ -4,9 +4,13 @@ import IconButton from '@mui/material/IconButton';
 // import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { DrawerHeader } from 'components/Interface/Window/DrawerHeader';
+import DrawerHeader from 'components/interface/window/common/DrawerHeader';
 
-export default function DrawerAuth({ theme, handleDrawerClose, children }) {
+export default function NavigationDrawer({
+  theme,
+  onClickDrawerClose: handleDrawerClose,
+  children,
+}) {
   return (
     <DrawerHeader>
       <Box
@@ -17,7 +21,7 @@ export default function DrawerAuth({ theme, handleDrawerClose, children }) {
           width: 1,
         }}
       >
-        <Box sx={{ padding: '8px 16px' }}>{children}</Box>
+        <Box sx={{ width: 1 }}>{children}</Box>
 
         <IconButton onClick={handleDrawerClose}>
           {theme.direction === 'ltr' ? (

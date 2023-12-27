@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Link, Typography } from '@mui/material';
 
+// [ ]  to make realy copyright string
+
 export default function Copyright(props) {
   return (
     <Typography

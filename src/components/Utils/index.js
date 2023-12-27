@@ -1,3 +1,3 @@
-import { ComingSoonPage } from 'components/Utils/ComingSoonPage';
+import ComingSoonPage from './ComingSoonPage';
 
 export { ComingSoonPage };
