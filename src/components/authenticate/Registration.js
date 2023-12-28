@@ -3,6 +3,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Box, Button } from '@mui/material';
 
+import authenticate from 'api/auth';
+
 import {
   WrpTextField,
   WrpConfirmPassword,
@@ -47,9 +49,21 @@ export default function Registration(props) {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = data => {
-    console.log('onSubmit');
-    console.log(data);
+  const onSubmit = async data => {
+    const { nickname, login, password } = data;
+    const body = {
+      email: login,
+      name: nickname,
+      password: password,
+    };
+    try {
+      const result = await authenticate.register(body);
+      // FIXME implement the transition if registration or login was successful
+      console.log(result);
+    } catch (err) {
+      // FIXME make an error display
+      console.log(err);
+    }
   };
 
   return (

@@ -7,6 +7,7 @@ import { Box, Button } from '@mui/material';
 import { WrpTextField, WrpPasswordField, componentProps } from 'common';
 import { NLink } from 'common/muiComponents';
 import { yupSchemas } from 'validation/yup';
+import authenticate from 'api/auth';
 
 const schema = yup.object({
   login: yupSchemas.login('Login'),
@@ -26,7 +27,21 @@ export default function Login(props) {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = async data => {
+    const { login, password } = data;
+    const body = {
+      email: login,
+      password: password,
+    };
+    try {
+      const result = await authenticate.login(body);
+      // FIXME implement the transition if registration or login was successful
+      console.log(result);
+    } catch (err) {
+      // FIXME make an error display
+      console.log(err);
+    }
+  };
 
   return (
     <Box {...props}>
