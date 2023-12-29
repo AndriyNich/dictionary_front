@@ -8,13 +8,33 @@ import { WrpTextField, WrpPasswordField, componentProps } from 'common';
 import { NLink } from 'common/muiComponents';
 import { yupSchemas } from 'validation/yup';
 import authenticate from 'api/auth';
+import { ContextAuth, AUTH_ACTION_TYPE } from 'common/context/auth';
 
 const schema = yup.object({
   login: yupSchemas.login('Login'),
   password: yupSchemas.password('Password'),
 });
 
+// XXX move to reducer
+const setAuthData = data => {
+  const { user, token } = data;
+  return {
+    type: AUTH_ACTION_TYPE.LOGGED_IN,
+    payload: {
+      user: {
+        nickname: user.name,
+        login: user.login,
+      },
+      token,
+      isLoggedIn: true,
+    },
+  };
+};
+
 export default function Login(props) {
+  const { state: authState, dispatch: authDispatch } =
+    React.useContext(ContextAuth);
+
   const {
     control,
     handleSubmit,
@@ -36,7 +56,7 @@ export default function Login(props) {
     try {
       const result = await authenticate.login(body);
       // FIXME implement the transition if registration or login was successful
-      console.log(result);
+      authDispatch(setAuthData(result.data));
     } catch (err) {
       // FIXME make an error display
       console.log(err);

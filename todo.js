@@ -9,3 +9,7 @@
 // [ ] maybe move "Copyrigth" to AuthContainer
 
 // [ ] make sure that the login and registration forms are centered in height, and the copyright is always at the bottom
+
+// [ ] make a logout confirmation form
+
+// [x] when entering the application, if the user is not logged in, then open the login form for him, otherwise the main page
