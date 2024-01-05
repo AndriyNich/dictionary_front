@@ -1,8 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from 'pages/Home';
-import Login from 'pages/Login';
-import Register from 'pages/Register';
-import Page404 from 'pages/Page404';
+import { Page404, HomePage, LoginPage, LogoutPage, RegisterPage } from 'pages';
 import WindowApp from './interface/window/main/WindowApp';
 import { ComingSoonPage } from 'components/utils';
 
@@ -11,10 +8,10 @@ export const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<WindowApp />}>
-          <Route index element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/logout" element={<div>Logout</div>} />
+          <Route index element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
 
           <Route path="/forgotpassword" element={<ComingSoonPage />} />
 

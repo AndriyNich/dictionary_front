@@ -13,18 +13,27 @@ const authToken = {
 
 const register = async credentials => {
   const data = await axios.post('users/register', credentials);
-  authToken.set(data.token);
+  authToken.set(data.data.token);
   return data;
 };
 
 const login = async credentials => {
   const data = await axios.post('users/login', credentials);
-  authToken.set(data.token);
+  console.log(data);
+  authToken.set(data.data.token);
+  return data;
+};
+
+const logout = async () => {
+  console.log(axios.defaults.headers.common.Authorization);
+  const data = await axios.post('users/logout');
+  authToken.unset();
   return data;
 };
 
 const authenticate = {
   login,
+  logout,
   register,
 };
 

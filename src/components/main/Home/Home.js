@@ -30,7 +30,7 @@ const defaultValues = {
   confirm: '',
 };
 
-export default function HomePage(props) {
+export default function Home(props) {
   const {
     control,
     handleSubmit,

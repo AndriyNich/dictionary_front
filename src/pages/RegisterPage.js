@@ -7,7 +7,7 @@ import {
 } from 'components/authenticate';
 import Copyright from 'components/Copyright';
 
-export default function Register() {
+export default function RegisterPage() {
   return (
     <AuthContainer>
       <AuthHeader sx={{ mt: 4 }}>Sing up</AuthHeader>

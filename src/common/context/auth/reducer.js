@@ -17,5 +17,6 @@ export const initialAuthState = {
 };
 
 export const authReducer = (state, action) => {
+  console.log('authreducer');
   return { ...state, ...action.payload };
 };

@@ -34,10 +34,7 @@ const initialTitle = 'to application';
 export default function AppBar({ open, onClickDrawerOpen: handleDrawerOpen }) {
   const {
     state: { user, isLoggedIn },
-    dispatch: authDispatch,
   } = React.useContext(ContextAuth);
-
-  //   React.useEffect(() => {}, [authState]);
 
   return (
     <WrpAppBar position="fixed" open={open}>

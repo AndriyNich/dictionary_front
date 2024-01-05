@@ -32,8 +32,7 @@ const setAuthData = data => {
 };
 
 export default function Login(props) {
-  const { state: authState, dispatch: authDispatch } =
-    React.useContext(ContextAuth);
+  const { dispatch: authDispatch } = React.useContext(ContextAuth);
 
   const {
     control,

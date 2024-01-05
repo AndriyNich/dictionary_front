@@ -27,7 +27,7 @@ export default function NavigationMain({
     >
       {/* XXX make state and dependence from state for NavigationAuth */}
       <NavigationDrawer theme={theme} onClickDrawerClose={handleDrawerClose}>
-        <NavigationAuth isLoggedIn={false} />
+        <NavigationAuth />
       </NavigationDrawer>
       <Divider />
       <NavigationList />

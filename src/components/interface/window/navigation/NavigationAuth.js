@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { pink } from '@mui/material/colors';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+
+import { ContextAuth } from 'common/context/auth';
 
 const auth = {
   true: {
@@ -18,7 +21,10 @@ const auth = {
   },
 };
 
-export default function NavigationAuth({ isLoggedIn = false }) {
+export default function NavigationAuth() {
+  const {
+    state: { isLoggedIn },
+  } = useContext(ContextAuth);
   const { text, icon, to } = auth[isLoggedIn];
 
   return (
