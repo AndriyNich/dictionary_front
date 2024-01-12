@@ -23,6 +23,21 @@ export const clearAuthData = () => {
   };
 };
 
+export const setAuthData = data => {
+  const { user, token } = data;
+  return {
+    type: AUTH_ACTION_TYPE.LOGGED_IN,
+    payload: {
+      user: {
+        nickname: user.name,
+        login: user.login,
+      },
+      token,
+      isLoggedIn: true,
+    },
+  };
+};
+
 export const authReducer = (state, action) => {
   console.log('authreducer');
   return { ...state, ...action.payload };

@@ -9,29 +9,13 @@ import { WrpTextField, WrpPasswordField, componentProps } from 'common';
 import { NLink } from 'common/muiComponents';
 import { yupSchemas } from 'validation/yup';
 import authenticate from 'api/auth';
-import { ContextAuth, AUTH_ACTION_TYPE } from 'common/context/auth';
+import { ContextAuth, setAuthData } from 'common/context/auth';
 import { REDIRECT_TO } from 'settings';
 
 const schema = yup.object({
   login: yupSchemas.login('Login'),
   password: yupSchemas.password('Password'),
 });
-
-// XXX move to reducer
-const setAuthData = data => {
-  const { user, token } = data;
-  return {
-    type: AUTH_ACTION_TYPE.LOGGED_IN,
-    payload: {
-      user: {
-        nickname: user.name,
-        login: user.login,
-      },
-      token,
-      isLoggedIn: true,
-    },
-  };
-};
 
 export default function Login(props) {
   const { dispatch: authDispatch } = React.useContext(ContextAuth);
