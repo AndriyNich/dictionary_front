@@ -1,8 +1,15 @@
 import {
   ContextAuth,
   initialAuthState,
+  clearAuthData,
   authReducer,
   AUTH_ACTION_TYPE,
 } from './reducer';
 
-export { ContextAuth, initialAuthState, authReducer, AUTH_ACTION_TYPE };
+export {
+  ContextAuth,
+  initialAuthState,
+  clearAuthData,
+  authReducer,
+  AUTH_ACTION_TYPE,
+};

@@ -1,56 +1,30 @@
-import { useEffect, useContext } from 'react';
-import authenticate from 'api/auth';
-import { ContextAuth, AUTH_ACTION_TYPE } from 'common/context/auth';
+import { NLink } from 'common';
+import { useLogout } from 'hooks';
 
-const clearAuthData = () => {
-  return {
-    type: AUTH_ACTION_TYPE.LOGOUT,
-    payload: {
-      user: {
-        nickname: '',
-        login: '',
-      },
-      token: '',
-      isLoggedIn: false,
-    },
-  };
+// FIXME create a correct visualization of the logout message
+// TODO change static messages to function
+const renderLogoutMessage = ({ isLogout, isLoading }) => {
+  if (isLoading) {
+    return 'Logout process ...';
+  } else if (isLogout) {
+    return 'Logout success';
+  } else {
+    return 'An error occurred during logout';
+  }
 };
-
-const logout = async dispatch => {
-  try {
-    const result = await authenticate.logout();
-    if (result.status === 204) {
-      dispatch(clearAuthData());
-      return true;
-    }
-  } catch (err) {}
-
-  return false;
-};
-
-let isLogout = false;
 
 export default function Logout() {
-  const {
-    state: { isLoggedIn },
-    dispatch: authDispatch,
-  } = useContext(ContextAuth);
+  const [isLogout, isLoading] = useLogout();
 
-  // [ ] maybe don't use useEffect
-  useEffect(() => {
-    if (isLoggedIn) {
-      isLogout = logout(authDispatch);
-    }
-  }, [authDispatch, isLoggedIn]);
-
-  // FIXME create a correct visualization of the logout message
-  // TODO change static messages to function
   return (
     <>
-      <div className="pt-4 pb-4">
-        {!isLoggedIn && isLogout
-          ? 'Logout success'
-          : 'An error occurred during logout'}
+      <div className="pt-4 pb-4 flex flex-col items-center">
+        <div className="mb-4">
+          {renderLogoutMessage({ isLogout, isLoading })}
+        </div>{' '}
+        <NLink to="/login" variant="body2">
+          Go to Sing in
+        </NLink>
       </div>
     </>
   );

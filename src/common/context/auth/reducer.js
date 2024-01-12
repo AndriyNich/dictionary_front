@@ -16,6 +16,13 @@ export const initialAuthState = {
   isLoggedIn: false,
 };
 
+export const clearAuthData = () => {
+  return {
+    type: AUTH_ACTION_TYPE.LOGOUT,
+    payload: initialAuthState,
+  };
+};
+
 export const authReducer = (state, action) => {
   console.log('authreducer');
   return { ...state, ...action.payload };

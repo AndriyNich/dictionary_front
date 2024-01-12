@@ -7,6 +7,8 @@ import { Box, Button } from '@mui/material';
 import { componentProps } from 'common';
 import WrpConfirmPassword from 'common/reactHookFormComponents/wrapperComponents/WrpConfirmPassword';
 import { yupSchemas } from 'validation/yup';
+// import { useFetch } from 'hooks';
+// import authenticate from 'api/auth';
 
 const comparisonErrorType = 'match';
 
@@ -41,7 +43,17 @@ export default function Home(props) {
     resolver: yupResolver(schema),
   });
 
+  // const [data, getFetch] = useFetch(authenticate.login)
+
   const onSubmit = data => {
+    // const { login, password } = data;
+    // const body = {
+    //   email: login,
+    //   password: password,
+    // };
+
+    // const res = useFetch(authenticate.login, body);
+
     console.log('onSubmit');
     console.log(data);
   };
