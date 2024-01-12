@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -9,6 +10,7 @@ import { NLink } from 'common/muiComponents';
 import { yupSchemas } from 'validation/yup';
 import authenticate from 'api/auth';
 import { ContextAuth, AUTH_ACTION_TYPE } from 'common/context/auth';
+import { REDIRECT_TO } from 'settings';
 
 const schema = yup.object({
   login: yupSchemas.login('Login'),
@@ -33,7 +35,7 @@ const setAuthData = data => {
 
 export default function Login(props) {
   const { dispatch: authDispatch } = React.useContext(ContextAuth);
-
+  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -54,8 +56,8 @@ export default function Login(props) {
     };
     try {
       const result = await authenticate.login(body);
-      // FIXME implement the transition if registration or login was successful
       authDispatch(setAuthData(result.data));
+      navigate(REDIRECT_TO.IS_LOGIN);
     } catch (err) {
       // FIXME make an error display
       console.log(err);

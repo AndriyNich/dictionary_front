@@ -14,6 +14,6 @@
 
 // [x] when entering the application, if the user is not logged in, then open the login form for him, otherwise the main page
 
-// [ ] after successful login go to the main page or display the error form
+// [ ] after error login go to the error form
 
 // TODO Switch on all verification for passwords
