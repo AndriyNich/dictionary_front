@@ -17,3 +17,5 @@
 // [ ] after error login go to the error form
 
 // TODO Switch on all verification for passwords
+
+// FIXME if you get to the logout page and there is no logged in user, show LOGOUT SUCCESS
