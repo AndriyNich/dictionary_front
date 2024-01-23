@@ -19,3 +19,7 @@
 // TODO Switch on all verification for passwords
 
 // FIXME if you get to the logout page and there is no logged in user, show LOGOUT SUCCESS
+
+// TODO при вході на сторінку по адресі робити перехід для панелі меню
+
+// XXX select icons for menu items
