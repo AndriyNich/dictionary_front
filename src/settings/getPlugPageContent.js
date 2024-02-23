@@ -20,7 +20,7 @@ function dictionariesPage() {
 function settingsPage() {
   return (
     <>
-      <p>Home page of the directories</p>
+      <p>Home page of the settings</p>
     </>
   );
 }
